@@ -1,13 +1,13 @@
 import numpy as np
 
-##from policies.SLSTMPolicy import SLSTMPolicy
-##policy = SLSTMPolicy()
-##policy.init()
-
-
-from policies.CADRLPolicy import CADRLPolicy
-policy = CADRLPolicy()
+from policies.SPECPolicy import SPECPolicy
+policy = SPECPolicy()
 policy.init()
+
+
+##from policies.SOCIALFORCEPolicy import SOCIALFORCEPolicy
+##policy = SOCIALFORCEPolicy()
+##policy.init()
 
 data = np.array(
         [[[12.91624378, 10.83968944],
@@ -100,10 +100,11 @@ data = np.array(
         [10.81790663,  4.46293825],
         [10.22481596,  4.44122021]]])
 
-agent_index = 0
-#result = policy.predict(data, agent_index)
+agent_index = 1 #0
+result = policy.predict(data, agent_index)
+
 goal= np.array([11,6])
-result = policy.predict(data, agent_index, goal, pref_speed= 1.0)  
+#result = policy.predict(data, agent_index, goal, pref_speed= 1.0)  
 
 
 #plot
@@ -162,7 +163,7 @@ ax.grid(which='minor', linestyle=':', linewidth='0.5', color='black' , alpha=0.2
 
 
 
-name = "visualization_cadrl"
+name = "visualization_spec"
 metadata = dict(title=name, artist='',
                 comment=name)
 writer_mp4 = animation.FFMpegFileWriter(fps=(3), metadata=metadata)
@@ -210,18 +211,16 @@ def animate(i):
 
         print("Agent "+str(agent_index))
 
+
         if len(result.shape)==1:
             patches.append(ax.add_patch( plt.Circle((records[0]+0.2,records[1]+0.2),0.2,color=[0,0,0,1 ] ,linewidth=0.00001      )))
                 
             patches.append(ax.legend(["Prediction".rjust(6)],loc="upper right", prop={'size': 14},handlelength=0.00001, handletextpad=0.00001, markerfirst=False))
-
-            #goal
-            patches.append(ax.add_patch( plt.Circle((goal[0]+0.2,goal[1]+0.2),0.2,color=[0,0,0,1 ] ,linewidth=0.00001      )))
             
         else:
             for i in range(total_history_len):
 
-                patches.append(ax.add_patch( plt.Circle((records[i][0]+0.2,records[i][1]+0.2),0.2,color=[0,0,0,((i/total_history_len)+0.05 ) ] ,linewidth=0.00001      )))
+                patches.append(ax.add_patch( plt.Circle((records[i][0]+0.2,records[i][1]+0.2),0.2,color=[0,0,0,(1-(i/total_history_len)-0.05 ) ] ,linewidth=0.00001      )))
                     
             patches.append(ax.legend(["Prediction".rjust(6)],loc="upper right", prop={'size': 14},handlelength=0.00001, handletextpad=0.00001, markerfirst=False))
 

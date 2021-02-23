@@ -162,9 +162,9 @@ ax.grid(which='minor', linestyle=':', linewidth='0.5', color='black' , alpha=0.2
 
 
 
-name = "visualization"
-metadata = dict(title=name, artist='Sam Shum',
-                comment='visualization')
+name = "visualization_socialforce"
+metadata = dict(title=name, artist='',
+                comment=name)
 writer_mp4 = animation.FFMpegFileWriter(fps=(3), metadata=metadata)
 writer_gif = animation.ImageMagickFileWriter(fps=(3), metadata=metadata)
 
