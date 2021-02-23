@@ -215,9 +215,7 @@ def animate(i):
                 
             patches.append(ax.legend(["Prediction".rjust(6)],loc="upper right", prop={'size': 14},handlelength=0.00001, handletextpad=0.00001, markerfirst=False))
 
-            #goal
-            patches.append(ax.add_patch( plt.Circle((goal[0]+0.2,goal[1]+0.2),0.2,color=[0,0,0,1 ] ,linewidth=0.00001      )))
-            
+    
         else:
             for i in range(total_history_len):
 
