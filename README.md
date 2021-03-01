@@ -3,6 +3,6 @@ A collection of social navigation algorithms with minimal examples, easy integra
 
 ---
 Usage
-```python
+```bash
 python example_cadrl.py
 ```
