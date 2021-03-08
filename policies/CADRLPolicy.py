@@ -75,7 +75,8 @@ class CADRLPolicy(object):
 
     
 
-    def predict(self, history, agent_index, goal, pref_speed=1.0, radius =0.2):
+    def predict(self, history, agent_index, goal, pref_speed=1.0, dt=None,  radius =0.2):
+        if dt is not None: self.DT = dt
         goal = np.array(goal)
 
         combined_history_x = history[:,:,0]

@@ -10,7 +10,7 @@ from itertools import compress
 class RVOPolicy(object):
     def __init__(self):
 
-        self.dt = 0.4 #Config.DT
+        self.DT = 0.4 #Config.DT
         self.neighbor_dist = np.inf
         self.max_neighbors = 30
 
@@ -24,7 +24,7 @@ class RVOPolicy(object):
         # TODO share this parameter with environment
         self.time_horizon = 20.0 # NOTE: bjorn used 1.0 in training for corl19
         # Initialize RVO simulator
-        self.sim = rvo2.PyRVOSimulator(timeStep=self.dt, neighborDist=self.neighbor_dist, 
+        self.sim = rvo2.PyRVOSimulator(timeStep=self.DT, neighborDist=self.neighbor_dist, 
             maxNeighbors=self.max_neighbors, timeHorizon=self.time_horizon, 
             timeHorizonObst=self.time_horizon, radius=0.0, 
             maxSpeed=0.0)
@@ -39,7 +39,7 @@ class RVOPolicy(object):
 
     def setup(self):
         self.sim = None
-        self.sim = rvo2.PyRVOSimulator(timeStep=self.dt, neighborDist=self.neighbor_dist, 
+        self.sim = rvo2.PyRVOSimulator(timeStep=self.DT, neighborDist=self.neighbor_dist, 
             maxNeighbors=self.max_neighbors, timeHorizon=self.time_horizon, 
             timeHorizonObst=self.time_horizon, radius=0.0, 
             maxSpeed=0.0)
@@ -58,7 +58,8 @@ class RVOPolicy(object):
         
         self.is_init = True
 
-    def predict(self, history, agent_index, goal, pref_speed=1.0, radius=0.2):
+    def predict(self, history, agent_index, goal, pref_speed=1.0, dt=None, radius=0.2):
+        if dt is not None: self.DT = dt
         goal= np.array(goal)
 
         combined_history_x = history[:,:,0]

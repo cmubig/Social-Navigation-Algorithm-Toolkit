@@ -103,7 +103,7 @@ data = np.array(
 agent_index = 0
 #result = policy.predict(data, agent_index)
 goal= np.array([11,6])
-result = policy.predict(data, agent_index, goal, pref_speed= 1.0)  
+result = policy.predict(data, agent_index, goal, pref_speed= 1.0, dt=0.4)   #0.2 #0.8 also tested=>ok 
 
 
 #plot

@@ -20,6 +20,8 @@ class SOCIALFORCEPolicy(object):
         self.obs_seq_len = 8
 
         self.is_init = False
+ 
+        self.DT = 0.4
 
 
             
@@ -28,9 +30,8 @@ class SOCIALFORCEPolicy(object):
 
         self.is_init = True
 
-    def predict(self, history, agent_index, goal, pref_speed=1.0):
-
-
+    def predict(self, history, agent_index, goal, pref_speed=1.0, dt=None):
+        if dt is not None: self.DT = dt
         goal= np.array(goal)
 
         combined_history_x = history[:,:,0]
@@ -82,7 +83,7 @@ class SOCIALFORCEPolicy(object):
         print(initial_state)
         s=None
         #s = socialforce.Simulator(initial_state, delta_t=0.1)
-        s = socialforce.Simulator(initial_state, delta_t=0.4)
+        s = socialforce.Simulator(initial_state, delta_t=self.DT)
         states = np.stack([s.step().state.copy() for _ in range(1)]) #step one time only
 
         #print("states")
