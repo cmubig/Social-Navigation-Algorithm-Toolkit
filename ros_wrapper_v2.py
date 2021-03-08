@@ -1,6 +1,14 @@
 import rospy
 
 import sys
+import os
+print(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(__file__))
+
+
+
+
+
 from std_msgs.msg import String, Float64
 from geometry_msgs.msg import Point, Vector3, PointStamped, Pose, PoseStamped
 from nav_msgs.msg import Odometry
