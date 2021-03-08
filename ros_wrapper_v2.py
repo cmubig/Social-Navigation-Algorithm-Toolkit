@@ -24,18 +24,18 @@ class social_navigator(object):
                 rospy.on_shutdown(self.cleanup)
 
                 self.waypoint_pub = rospy.Publisher('/way_point',  PointStamped, queue_size=10)
-                self.peds_sub     = rospy.Subscriber("/tracks", TrackArray, self.track_callback, queue_size=1)
+                self.peds_sub     = rospy.Subscriber("/hdl_people_tracking/tracks", TrackArray, self.track_callback, queue_size=1)
 
-                self.goal_sub     = rospy.Subscriber("/goal", PointStamped,  self.goal_callback, queue_size=1)
+                self.goal_sub     = rospy.Subscriber("/nav_goal", PointStamped,  self.goal_callback, queue_size=1)
 
-                self.timestamp = None
+                self.old_timestamp = None
                 self.old_odom_msg  = None
                 self.goal = None
 
         def goal_callback(self, data):
 
-            goal_x = data.pose.position.x
-            goal_y = data.pose.position.y
+            goal_x = data.point.x
+            goal_y = data.point.y
 
             self.goal = [goal_x,goal_y]
             
@@ -43,7 +43,7 @@ class social_navigator(object):
 
         def track_callback(self, data):
 
-            if self.timestamp is None:
+            if self.old_timestamp is None:
                 self.old_timestamp = data.header.stamp
                 self.old_odom_msg  = rospy.wait_for_message('/integrated_to_init', Odometry)
                 return
@@ -111,18 +111,18 @@ while not rospy.is_shutdown():
             social_navigator_node.timestamp = rospy.Time.now()
             social_navigator_node.old_odom_msg = social_navigator_node.odom_msg
 
-            if social_navigator_node.goal is None: return
+            if social_navigator_node.goal is None: continue
 
             #start feeding the data to algorithms
             data = np.array( ped_history_list )
             goal = np.array(social_navigator_node.goal)
-            result = policy.predict(data, 0, goal, pref_speed= 1.0, dt=dt)
+            result = policy.predict(data, 0, goal, pref_speed= 1.0, dt=0.4) #dt
 
             
-            waypoint = PoseStamped()
+            waypoint = PointStamped()
             waypoint.header.stamp  = rospy.Time.now()
-            waypoint.pose.position.x = result[0]
-            waypoint.pose.position.y = result[1]
+            waypoint.point.x = result[0]
+            waypoint.point.y = result[1]
 
             social_navigator_node.waypoint_pub( waypoint )
     except:
