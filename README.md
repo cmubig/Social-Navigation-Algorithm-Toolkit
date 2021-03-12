@@ -13,7 +13,16 @@ Usage
 python example_cadrl.py
 ```
 
+Output
+<img src="gif/visualization_cadrl.gif" alt="cadrl">
 
+Usage
+```bash
+python example_cadrl.py
+```
+
+Output
+<img src="gif/visualization_rvo.gif" alt="rvo">
 
 ---
 ### References
