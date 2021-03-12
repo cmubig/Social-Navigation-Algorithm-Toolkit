@@ -8,6 +8,12 @@ Currently supported algorithms:
 * and more.
 
 ---
+### Library Requirement and Suggested Version
+* numpy (numpy==1.18.1)
+* pytorch (torch==1.3.1)
+* Python-RVO2 [here](https://github.com/mit-acl/Python-RVO2/tree/56b245132ea104ee8a621ddf65b8a3dd85028ed2)
+
+---
 ### Example Usage
 ```bash
 python example_cadrl.py
@@ -17,7 +23,7 @@ python example_cadrl.py
 ---
 
 ```bash
-python example_cadrl.py
+python example_rvo.py
 ```
 <img src="gif/visualization_rvo.gif" alt="rvo">  
 
