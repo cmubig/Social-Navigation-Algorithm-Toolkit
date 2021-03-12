@@ -8,23 +8,23 @@ RVO
 and more.
 
 ---
-Usage
+** Example Usage
 ```bash
 python example_cadrl.py
 ```
 
 Output
 <img src="gif/visualization_cadrl.gif" alt="cadrl">
+---
 
-Usage
 ```bash
 python example_cadrl.py
 ```
 
 Output
 <img src="gif/visualization_rvo.gif" alt="rvo">
+---
 
-Usage
 ```bash
 python example_socialforce.py
 ```
