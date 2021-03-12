@@ -240,5 +240,5 @@ anim = animation.FuncAnimation(fig, animate,
                                repeat=False)
 
 anim.save(str(name)+'.mp4', writer=writer_mp4)
-
+anim.save(str(name)+'.mp4', writer=writer_gif)
 
