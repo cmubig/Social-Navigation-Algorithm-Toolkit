@@ -1,5 +1,5 @@
 # Social-Navigation-Algorithm-Toolkit
-A collection of social navigation algorithms with minimal examples, easy integration with external system.
+**A collection of social navigation algorithms with minimal examples, easy integration with external system.**
 
 Currently supported algorithms:  
 * CADRL  
@@ -8,7 +8,7 @@ Currently supported algorithms:
 * and more.
 
 ---
-**Example Usage**
+### Example Usage
 ```bash
 python example_cadrl.py
 ```
