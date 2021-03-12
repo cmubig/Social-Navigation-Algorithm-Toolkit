@@ -13,12 +13,14 @@ and more.
 python example_cadrl.py
 ```
 <img src="gif/visualization_cadrl.gif" alt="cadrl">  
+
 ---
 
 ```bash
 python example_cadrl.py
 ```
 <img src="gif/visualization_rvo.gif" alt="rvo">  
+
 ---
 
 ```bash
