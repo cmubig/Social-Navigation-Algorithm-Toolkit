@@ -2,10 +2,10 @@
 A collection of social navigation algorithms with minimal examples, easy integration with external system.
 
 Currently supported algorithms:  
-CADRL  
-Socialforce  
-RVO  
-and more.
+* CADRL  
+* Socialforce  
+* RVO  
+* and more.
 
 ---
 **Example Usage**
