@@ -8,7 +8,7 @@ Currently supported algorithms:
 * and more.
 
 ### Project Contributors  
-Sam Shum (cshum@andrew.cmu.edu)
+Sam Shum (cshum@andrew.cmu.edu) and Dr. Jean Oh
 
 ---
 ### Library Requirement and Suggested Version
