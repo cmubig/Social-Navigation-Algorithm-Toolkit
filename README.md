@@ -7,6 +7,9 @@ Currently supported algorithms:
 * RVO  
 * and more.
 
+### Project Contributors  
+Sam Shum (cshum@andrew.cmu.edu)
+
 ---
 ### Library Requirement and Suggested Version
 * numpy (numpy==1.18.1)
